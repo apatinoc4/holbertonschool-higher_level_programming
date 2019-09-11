@@ -1,43 +1,47 @@
 #include "lists.h"
-
+#include <stdlib.h>
 /**
- * insert_node - inserts a node in a sorted linked list
- * @head: first node
- * @number: node value
- *
- * Return: new node, null if it fails
- */
-
+* insert_node - Adds a node on a sorted list.
+* @head: Pointer to the current first element of the list.
+* @number: Number to initialize the new element.
+* Return: Pointer to the new first element or 0 if it fails.
+*/
 listint_t *insert_node(listint_t **head, int number)
 {
-	listint_t *actual, *new_node;
+	listint_t *new, *iterator = *head;
 
 	if (!head)
 		return (NULL);
-
-	new_node = malloc(sizeof(listint_t));
-
-	if (!new_node)
+	new = malloc(sizeof(listint_t));
+	if (!new)
 		return (NULL);
-
-	new_node->next = NULL;
-	new_node->n = number;
-
-	if (!*head || (*head)->n >= new_node->n)
+	new->n = number;
+	if (!*head)
 	{
-		new_node->next = *head;
-		*head = new_node;
+		*head = new;
+		new->next = NULL;
+		return (new);
+	}
+	if (number <= (*head)->n)
+	{
+		new->next = *head;
+		*head = new;
+		return (new);
 	}
 	else
 	{
-		actual = *head;
-		while (actual->next != NULL && actual->next->n < new_node->n)
+		while (iterator->next)
 		{
-			actual = actual->next;
+			if (number <= iterator->next->n)
+			{
+				new->next = iterator->next;
+				iterator->next = new;
+				return (new);
+			}
+			iterator = iterator->next;
 		}
-		new_node->next = actual->next;
-		actual->next = new_node;
 	}
-	return (new_node);
-
+	new->next = NULL;
+	iterator->next = new;
+	return (new);
 }
