@@ -1,0 +1,50 @@
+The ``3-say_my_name`` module
+============================
+
+Using ``say_my_name``
+---------------------
+
+Import ``say_my_name`` from the ``3-say_my_name`` module
+
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+
+`first_name` should be of type str:
+
+    >>> say_my_name(["string"], "Huxtable")
+    Traceback (most recent call last):
+    ...
+    TypeError: first_name must be a string
+
+`last_name` should be of type str:
+
+    >>> say_my_name("Theodore", 123)
+    Traceback (most recent call last):
+    ...
+    TypeError: last_name must be a string
+
+Should print 'My name is ' followed by full name:
+
+    >>> say_my_name("Theo", "Huxtable")
+    My name is Theo Huxtable
+
+Should print full name with extra whitespace:
+
+    >>> say_my_name(" Theo ", " Huxtable ")
+    My name is  Theo   Huxtable 
+
+If only one argument is given, it should be first_name, followed by a space:
+
+    >>> say_my_name("Theo")
+    My name is Theo 
+
+Should print names with unicode characters:
+
+    >>> say_my_name("")
+    My name is  
+
+Should raise Exception if no arguments are given:
+
+    >>> say_my_name()
+    Traceback (most recent call last):
+    ...
+    TypeError: say_my_name() missing 1 required positional argument: 'first_name'
