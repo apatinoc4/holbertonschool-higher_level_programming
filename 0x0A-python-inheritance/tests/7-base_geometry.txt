@@ -1,0 +1,47 @@
+The ``1-my_list`` module
+============================
+
+Using ``integer_validator`` method in ``BaseGeometry`` Class
+---------------------
+
+Should import `BaseGeometry` from `7-base_geometry` module:
+
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+    >>> bg1 = BaseGeometry()
+    >>> isinstance(bg1, BaseGeometry)
+    True
+
+Should import `integer_validator` method from `BaseGeometry` class:
+
+    >>> integer_validator = __import__('7-base_geometry').BaseGeometry.integer_validator
+    >>> type(integer_validator)
+    <class 'function'>
+
+Should raise TypeError if `value` is not an integer:
+
+    >>> bg1.integer_validator('name', 'string')
+    Traceback (most recent call last):
+    ...
+    TypeError: name must be an integer
+
+    >>> bg1.integer_validator('xxx', [6, 6, 6])
+    Traceback (most recent call last):
+    ...
+    TypeError: xxx must be an integer
+
+    >>> bg1.integer_validator('xxx', 42.0)
+    Traceback (most recent call last):
+    ...
+    TypeError: xxx must be an integer
+
+Should raise ValueError if `value` is less than 1:
+
+    >>> bg1.integer_validator('lee', -42)
+    Traceback (most recent call last):
+    ...
+    ValueError: lee must be greater than 0
+
+    >>> bg1.integer_validator('jack', 0)
+    Traceback (most recent call last):
+    ...
+    ValueError: jack must be greater than 0
