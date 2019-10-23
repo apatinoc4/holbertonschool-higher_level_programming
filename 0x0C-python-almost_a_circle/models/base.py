@@ -43,4 +43,3 @@ class Base:
         except IOError:
             return []
         return [cls.create(**x) for x in tmpDict]
-
