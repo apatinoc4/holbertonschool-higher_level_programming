@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" 
+"""
 script that takes in arguments and displays all values in the states
 """
 
