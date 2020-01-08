@@ -7,7 +7,7 @@ def find_peak(list_of_integers):
     if not list_of_integers:
         return None
     return finder(list_of_integers, len(list_of_integers),
-                       0, len(list_of_integers) - 1)
+                  0, len(list_of_integers) - 1)
 
 
 def finder(array, length, low, high):
