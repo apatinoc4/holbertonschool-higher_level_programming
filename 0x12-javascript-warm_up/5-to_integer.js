@@ -1,6 +1,7 @@
 #!/usr/bin/node
-if (isNaN(parseInt(process.argv[2]))) {
+const myvar = parseInt(process.argv[2]);
+if (isNaN(myvar)) {
   console.log('Not a number');
 } else {
-  console.log(parseInt(process.argv[2]));
+  console.log(myvar);
 }
